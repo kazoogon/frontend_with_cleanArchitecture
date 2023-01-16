@@ -1,11 +1,12 @@
-import React from 'react';
+import React from 'react'
+import styled from 'styled-components'
 
-function App() {
-  return (
-    <div className="App">
-      hello world
-    </div>
-  );
+const App = () => {
+  return <Wrapper>Hello word</Wrapper>
 }
 
-export default App;
+const Wrapper = styled.div`
+  color: red;
+`
+
+export default App
