@@ -1,12 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import Todo from 'components/pages/Todo'
 
 const App = () => {
-  return <Wrapper>Hello word</Wrapper>
+  return <Todo />
 }
-
-const Wrapper = styled.div`
-  color: red;
-`
 
 export default App
