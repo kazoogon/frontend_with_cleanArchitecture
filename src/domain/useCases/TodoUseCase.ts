@@ -1,4 +1,5 @@
 import { TodoRepository } from 'domain/repositories/TodoRepository'
+import { Todo } from 'domain/entities/Todo'
 
 export default class TodoUseCase {
   constructor(private readonly todoRepository: TodoRepository) {}
@@ -13,5 +14,9 @@ export default class TodoUseCase {
 
   addTodo(val: string) {
     return this.todoRepository.addTodo(val)
+  }
+
+  updateTodo(item: Todo) {
+    return this.todoRepository.updateTodo(item)
   }
 }

@@ -1,4 +1,5 @@
 import TodoUseCase from 'domain/useCases/TodoUseCase'
+import { Todo } from 'domain/entities/Todo'
 
 export default class TodoPresenter {
   constructor(private readonly todoUseCase: TodoUseCase) {}
@@ -13,5 +14,9 @@ export default class TodoPresenter {
 
   addTodo(val: string) {
     return this.todoUseCase.addTodo(val)
+  }
+
+  updateTodo(item: Todo) {
+    return this.todoUseCase.updateTodo(item)
   }
 }

@@ -39,4 +39,13 @@ export default class TodoData {
 
     return todos
   }
+
+  updateTodo(item: Todo): Todo[] {
+    const todos = this.getTodos()
+    const index = todos.findIndex((todo: Todo) => todo.id === item.id)
+    todos[index] = item
+    setToLocalStorage(todos)
+
+    return todos
+  }
 }
