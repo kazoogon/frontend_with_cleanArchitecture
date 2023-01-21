@@ -23,7 +23,7 @@ I'm not gonna here explain deeply, but as you can see clean architecture is simi
 ▼ [From this youtube video](https://www.youtube.com/watch?v=BvzjpAe3d4g)  
 ![](../../../Downloads/simple_architecture.png)
 
-And this is famous architecture image, eyes automatically focus on big circle image, but right bottom image is also important
+And this is famous architecture image, eyes automatically focus on big circle image, but right bottom image is also important  
 ![](.README_images/architecture.png)
 
 You can easily see architecture flow with that gaming image
