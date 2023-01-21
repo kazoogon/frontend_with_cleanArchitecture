@@ -31,7 +31,7 @@ export default class TodoData {
     return deletedData
   }
 
-  addTodo(val: string): Todo[] {
+  createTodo(val: string): Todo[] {
     const todos = this.getTodos()
     const lastData = todos.slice(-1)[0]
     todos.push({ content: val, id: lastData.id + 1 })

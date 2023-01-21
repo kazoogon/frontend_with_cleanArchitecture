@@ -12,8 +12,8 @@ export default class TodoUseCase {
     return this.todoRepository.deleteTodo(id)
   }
 
-  addTodo(val: string) {
-    return this.todoRepository.addTodo(val)
+  createTodo(val: string) {
+    return this.todoRepository.createTodo(val)
   }
 
   updateTodo(item: Todo) {

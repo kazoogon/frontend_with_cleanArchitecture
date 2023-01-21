@@ -97,8 +97,8 @@ const TodoList = () => {
     setTodos(res)
   }
 
-  const addTodo = () => {
-    const res = todoPresenter.addTodo(newTodoValue)
+  const createTodo = () => {
+    const res = todoPresenter.createTodo(newTodoValue)
     setTodos(res)
     setNewTodoValue('')
   }
@@ -159,7 +159,7 @@ const TodoList = () => {
             <Button
               variant="contained"
               disabled={newTodoValue.length === 0}
-              onClick={() => addTodo()}
+              onClick={() => createTodo()}
             >
               Add
             </Button>

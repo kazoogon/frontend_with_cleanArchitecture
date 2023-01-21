@@ -12,8 +12,8 @@ export default class TodoPresenter {
     return this.todoUseCase.deleteTodo(id)
   }
 
-  addTodo(val: string) {
-    return this.todoUseCase.addTodo(val)
+  createTodo(val: string) {
+    return this.todoUseCase.createTodo(val)
   }
 
   updateTodo(item: Todo) {
