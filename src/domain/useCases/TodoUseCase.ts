@@ -6,4 +6,12 @@ export default class TodoUseCase {
   getTodos() {
     return this.todoRepository.getTodos()
   }
+
+  deleteTodo(id: number) {
+    return this.todoRepository.deleteTodo(id)
+  }
+
+  addTodo(val: string) {
+    return this.todoRepository.addTodo(val)
+  }
 }
