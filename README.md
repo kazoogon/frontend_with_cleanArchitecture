@@ -16,12 +16,13 @@ $ yarn start
 | di/         | Store Dependency Injection codes                                                                                                                       |
 
 ### Layers
-![](../../../Downloads/layer.png)
+![layer](https://user-images.githubusercontent.com/24407811/213846562-12730999-0b94-430f-8c0a-15c5085ae474.png)
+
 
 ## 🤔 What is clean architecture?
 I'm not gonna here explain deeply, but as you can see clean architecture is similar to game structure  
 ▼ [From this youtube video](https://www.youtube.com/watch?v=BvzjpAe3d4g)  
-![](../../../Downloads/simple_architecture.png)
+![simple_architecture](https://user-images.githubusercontent.com/24407811/213846576-c48d8a86-deca-4c02-8fed-84eb18927a31.png)
 
 And this is famous architecture image, eyes automatically focus on big circle image, but right bottom image is also important  
 ![](.README_images/architecture.png)
