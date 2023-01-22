@@ -10,7 +10,7 @@ $ yarn start
 ### directories
 | name        | explanation                                                                                                                                            |
 |-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| components/ | Store presentation(view, UI) layer. Should be organize with atomic design for example, but later.                                                      |
+| components/ | Store presentation(view, UI) layer. <br/>Should be organize with atomic design for example, but later.                                                      |
 | domain/     | Store domain layer. Entities and repository looks they should be in data directory, but in order to dependency inversion, they depends on domain layer |
 | data/       | Store data layor (repository and data)                                                                                                                 |
 | di/         | Store Dependency Injection codes                                                                                                                       |
