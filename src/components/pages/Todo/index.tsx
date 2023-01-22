@@ -7,7 +7,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  Modal,
   TextField,
   Typography,
 } from '@mui/material'
@@ -15,78 +14,18 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import { Todo } from 'domain/entities/Todo'
 import { provideTodoPresenter } from 'di/presenters'
+import EditTodoModal from 'components/modals/editTodoModal'
+import { KEY_ENTER } from 'components/pages/Todo/constant'
 
 const todoPresenter = provideTodoPresenter()
 
-const editModalStyle = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  textAlign: 'center',
-}
-
-const EditModal = (props: any) => {
-  const { isEditMode, setIsEditMode, currentEditItem, setTodos } = props
-  const [val, setVal] = useState<string>(currentEditItem.content)
-
-  return (
-    <Box sx={{ margin: 'auto 0' }}>
-      <Modal
-        open={isEditMode}
-        onClose={() => setIsEditMode()}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={editModalStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Update
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <TextField
-              id="add"
-              label="add new list"
-              variant="filled"
-              value={val}
-              onChange={(e) => setVal(e.target.value)}
-            />
-          </Typography>
-          <Box sx={{ display: 'block' }}>
-            <Button
-              sx={{ m: 2 }}
-              variant="contained"
-              disabled={currentEditItem.content === val}
-              onClick={() => {
-                const res = todoPresenter.updateTodo({
-                  content: val,
-                  id: currentEditItem.id,
-                })
-                setTodos(res)
-                setIsEditMode()
-              }}
-            >
-              Update
-            </Button>
-          </Box>
-        </Box>
-      </Modal>
-    </Box>
-  )
-}
-
 const TodoList = () => {
   const [todos, setTodos] = useState<Todo[]>()
-  const [newTodoValue, setNewTodoValue] = useState<string>('')
-  const [isEditMode, setIsEditMode] = useReducer(
-    (prev: boolean) => !prev,
-    false
+  const [createInputValue, setCreateInputValue] = useState<string>('')
+  const [update, setUpdate] = useReducer(
+    (data: any, partialData: any) => ({ ...data, ...partialData }),
+    { isUpdateMode: false, currentUpdateItem: {} }
   )
-  const [currentEditItem, setCurrentEditItem] = useState({})
 
   useEffect(() => {
     setTodos(todoPresenter.getTodos())
@@ -97,15 +36,24 @@ const TodoList = () => {
     setTodos(res)
   }
 
-  const createTodo = () => {
-    const res = todoPresenter.createTodo(newTodoValue)
+  const createItem = () => {
+    const res = todoPresenter.createTodo(createInputValue)
     setTodos(res)
-    setNewTodoValue('')
+    setCreateInputValue('')
   }
 
-  const editItem = (item: Todo) => {
-    setIsEditMode()
-    setCurrentEditItem(item)
+  const updateModalOpen = (item: Todo) => {
+    setUpdate({ isUpdateMode: true, currentUpdateItem: item })
+  }
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (
+      e.nativeEvent.isComposing ||
+      e.key !== KEY_ENTER ||
+      createInputValue.length === 0
+    )
+      return
+    createItem()
   }
 
   const list =
@@ -120,7 +68,10 @@ const TodoList = () => {
               <IconButton
                 edge="end"
                 aria-label="edit"
-                onClick={() => editItem(item)}
+                onClick={() => {
+                  updateModalOpen(item)
+                }}
+                focusRipple={false}
               >
                 <EditIcon />
               </IconButton>
@@ -152,14 +103,16 @@ const TodoList = () => {
             id="add"
             label="add new list"
             variant="filled"
-            value={newTodoValue}
-            onChange={(e) => setNewTodoValue(e.target.value)}
+            value={createInputValue}
+            onChange={(e) => setCreateInputValue(e.target.value)}
+            onKeyPress={(e) => handleKeyPress(e)}
+            autoFocus={true}
           />
           <Box sx={{ display: 'block' }}>
             <Button
               variant="contained"
-              disabled={newTodoValue.length === 0}
-              onClick={() => createTodo()}
+              disabled={createInputValue.trim().length === 0}
+              onClick={() => createItem()}
             >
               Add
             </Button>
@@ -167,10 +120,9 @@ const TodoList = () => {
         </Box>
         <List>{list}</List>
       </Grid>
-      <EditModal
-        isEditMode={isEditMode}
-        setIsEditMode={setIsEditMode}
-        currentEditItem={currentEditItem}
+      <EditTodoModal
+        update={update}
+        setUpdate={setUpdate}
         setTodos={setTodos}
       />
     </Box>
