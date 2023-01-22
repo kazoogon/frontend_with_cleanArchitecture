@@ -14,6 +14,7 @@ const setToLocalStorage = (todos: Todo[]) => {
   localStorage.setItem(KEY_NAME, json)
 }
 
+// it looks like useCase code, but it's just alternate of backend
 export default class TodoData {
   getTodos(): Todo[] {
     let data = localStorage.getItem(KEY_NAME)

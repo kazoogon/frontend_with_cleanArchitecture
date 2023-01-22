@@ -49,9 +49,9 @@ If you have learned SOLID principle, would remind you of Dependency Inversion
 - remove data button (local storage)
 
 ## 💡 References
-[youtube in Japanese](https://www.youtube.com/watch?v=BvzjpAe3d4g)  
+[🖥 🇯🇵 youtube in Japanese](https://www.youtube.com/watch?v=BvzjpAe3d4g)  
   easiest way to understand what is clean architecture if you understand Japanese
 
-[react with clean architecture, github source code](https://github.com/falsy/react-with-clean-architecture)  
+[📗 react with clean architecture, github source code](https://github.com/falsy/react-with-clean-architecture)  
   I think this code is more real world code than mine, you even could get how to handle with web and mobile by using **adapter**
 
