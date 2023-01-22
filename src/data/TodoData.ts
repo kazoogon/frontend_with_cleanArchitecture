@@ -33,8 +33,8 @@ export default class TodoData {
 
   createTodo(val: string): Todo[] {
     const todos = this.getTodos()
-    const lastData = todos.slice(-1)[0]
-    todos.push({ content: val, id: lastData.id + 1 })
+    const lastDataId = todos.length > 0 ? todos.slice(-1)[0].id : 0
+    todos.push({ content: val, id: lastDataId + 1 })
     setToLocalStorage(todos)
 
     return todos
