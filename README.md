@@ -55,3 +55,9 @@ If you have learned SOLID principle, would remind you of Dependency Inversion
 [📗 react with clean architecture, github source code](https://github.com/falsy/react-with-clean-architecture)  
   I think this code is more real world code than mine, you even could get how to handle with web and mobile by using **adapter**
 
+## etc
+After trying to make this one, honestly I thought **clean architecture** is too complicated, because we don't use often **useCase** and **repository** effectively.
+
+So [presentational and container pattern](https://www.patterns.dev/posts/presentational-container-pattern/) might be simpler and better way.
+
+simply put, this pattern is that separating business login component and UI component.
